@@ -184,25 +184,6 @@
       50% { transform: translateX(-50%) translateY(-6px); }
     }
 
-    /* === QUOTE === */
-    .quote-section blockquote {
-      border: none;
-      margin: 0;
-      padding: 0;
-      font-family: 'Fraunces', serif;
-      font-size: clamp(1.6rem, 4.5vw, 3rem);
-      font-weight: 400;
-      line-height: 1.2;
-      font-style: italic;
-      max-width: 900px;
-    }
-    .quote-section .attr {
-      margin-top: 1.8em;
-      font-size: 14px;
-      color: var(--muted);
-      letter-spacing: 0.04em;
-    }
-
     /* === SHORT ANSWER === */
     .answer-section h2 {
       max-width: 920px;
@@ -605,15 +586,6 @@
     <div class="scroll-hint" data-i18n="hero.scroll">Прокрутите вниз</div>
   </section>
 
-  <!-- QUOTE -->
-  <section class="quote-section">
-    <div class="container reveal-on-scroll">
-      <span class="eyebrow" data-i18n="quote.eyebrow">Вопрос, который слышат все</span>
-      <blockquote data-i18n="quote.text" data-i18n-html>«А почему так дорого?<br>Я видел дешевле».</blockquote>
-      <p class="attr" data-i18n="quote.attr">— Почти каждый клиент перед сделкой</p>
-    </div>
-  </section>
-
   <!-- SHORT ANSWER -->
   <section class="answer-section">
     <div class="container reveal-on-scroll">
@@ -900,11 +872,6 @@
           meta: "2026 · Версия 1.0",
           scroll: "Прокрутите вниз"
         },
-        quote: {
-          eyebrow: "Вопрос, который слышат все",
-          text: "«А почему так дорого?<br>Я видел дешевле».",
-          attr: "— Почти каждый клиент перед сделкой"
-        },
         answer: {
           eyebrow: "Короткий ответ",
           title: "Цена — это <span class=\"mark\">сумма решений</span>, которые мы приняли в вашу пользу.",
@@ -1017,11 +984,6 @@
           subtitle: "A transparent breakdown of our tag servers' price — and why it can't be compared to classic servers on the market.",
           meta: "2026 · Version 1.0",
           scroll: "Scroll down"
-        },
-        quote: {
-          eyebrow: "The question everyone hears",
-          text: "\"Why is it so expensive?<br>I've seen cheaper.\"",
-          attr: "— Nearly every client before signing"
         },
         answer: {
           eyebrow: "Short answer",
