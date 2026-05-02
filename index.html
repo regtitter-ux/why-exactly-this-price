@@ -356,7 +356,6 @@
       background: var(--bg-alt);
     }
     td.highlight { font-weight: 500; }
-    .compare th:first-child, .compare td:first-child { padding-left: 4px; }
 
     /* === STATS === */
     .stats {
@@ -415,55 +414,6 @@
     .feature-list li:last-child { border-bottom: none; }
     .feature-list strong { color: var(--ink); }
     .feature-list em { color: var(--muted); font-style: normal; }
-
-    /* === GUARANTEES (2-col) === */
-    .two-col {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px 60px;
-      margin-top: 2.5em;
-    }
-    .two-col .item h3 {
-      font-family: 'Inter', sans-serif;
-      font-size: 1rem;
-      font-weight: 600;
-      margin-bottom: 0.4em;
-    }
-    .two-col .item p {
-      font-size: 0.95rem;
-      color: var(--muted);
-      margin: 0;
-      line-height: 1.5;
-    }
-
-    /* === ORDERED LIST === */
-    .options {
-      list-style: none;
-      counter-reset: options;
-      padding: 0;
-      margin: 2em 0 0;
-      max-width: 880px;
-    }
-    .options li {
-      counter-increment: options;
-      position: relative;
-      padding: 24px 0 24px 64px;
-      border-bottom: 1px solid var(--line);
-      font-size: 1rem;
-      line-height: 1.55;
-    }
-    .options li::before {
-      content: counter(options, decimal-leading-zero);
-      position: absolute;
-      left: 0;
-      top: 22px;
-      font-family: 'Fraunces', serif;
-      font-size: 1.4rem;
-      font-weight: 600;
-      color: var(--accent);
-    }
-    .options li:last-child { border-bottom: none; }
-    .options strong { color: var(--ink); }
 
     /* === CTA === */
     .cta {
@@ -543,7 +493,6 @@
       .cards { grid-template-columns: 1fr; gap: 16px; }
       .stats { grid-template-columns: 1fr; gap: 28px; }
       .stats.stats-4 { grid-template-columns: repeat(2, 1fr); gap: 28px 24px; }
-      .two-col { grid-template-columns: 1fr; gap: 28px; }
       .compare-grid { grid-template-columns: 1fr; gap: 16px; }
       .compare-card { padding: 26px 24px; }
       .hero { padding-top: 60px; }
@@ -553,8 +502,6 @@
       th, td { padding: 14px 12px; font-size: 0.88rem; }
       .feature-list li { padding-left: 28px; }
       .feature-list li::before { top: 26px; width: 16px; }
-      .options li { padding-left: 50px; }
-      .options li::before { font-size: 1.2rem; }
 
       .cta .contacts strong { display: block; min-width: auto; margin-bottom: 2px; }
       .cta .contacts { line-height: 1.6; }
@@ -696,77 +643,24 @@
     </div>
   </section>
 
-  <!-- SECTION II: COMPARISON -->
+  <!-- SECTION II: VALUE / ROI -->
   <section>
     <div class="container reveal-on-scroll">
       <span class="section-num">II</span>
-      <span class="eyebrow" data-i18n="compare.sectionEyebrow">Часть вторая · Где мы на рынке</span>
-      <h2 data-i18n="compare.title">Три варианта, которые есть у клиента</h2>
-      <div class="table-wrap">
-        <table class="compare">
-          <thead>
-            <tr>
-              <th></th>
-              <th data-i18n="compare.head.cheap">Дешёвый</th>
-              <th class="highlight" style="text-align:center;" data-i18n="compare.head.us">Мы</th>
-              <th data-i18n="compare.head.expensive">Дорогой</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td data-i18n="compare.row1.name">Цена</td>
-              <td data-i18n="compare.row1.cheap">−40%</td>
-              <td class="highlight" style="text-align:center;"><strong data-i18n="compare.row1.us">База</strong></td>
-              <td data-i18n="compare.row1.expensive">+60%</td>
-            </tr>
-            <tr>
-              <td data-i18n="compare.row2.name">Источник трафика</td>
-              <td data-i18n="compare.row2.cheap">Платная реклама</td>
-              <td class="highlight" style="text-align:center;" data-i18n="compare.row2.us">100% органика</td>
-              <td data-i18n="compare.row2.expensive">Платная реклама</td>
-            </tr>
-            <tr>
-              <td data-i18n="compare.row3.name">Расходы в месяц после покупки</td>
-              <td data-i18n="compare.row3.cheap">$1k+ на рекламу</td>
-              <td class="highlight" style="text-align:center;" data-i18n="compare.row3.us">$0</td>
-              <td data-i18n="compare.row3.expensive">$5k+ на рекламу</td>
-            </tr>
-            <tr>
-              <td data-i18n="compare.row4.name">Через год без рекламы</td>
-              <td data-i18n="compare.row4.cheap">Сервер мёртв</td>
-              <td class="highlight" style="text-align:center;" data-i18n="compare.row4.us">Работает так же</td>
-              <td data-i18n="compare.row4.expensive">Сервер мёртв</td>
-            </tr>
-            <tr>
-              <td data-i18n="compare.row5.name">Чем подкреплена цена</td>
-              <td data-i18n="compare.row5.cheap">Прошлые расходы на рекламу</td>
-              <td class="highlight" style="text-align:center;" data-i18n="compare.row5.us">Накопленный актив</td>
-              <td data-i18n="compare.row5.expensive">Прошлые расходы на рекламу</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </section>
-
-  <!-- SECTION III: VALUE / ROI -->
-  <section>
-    <div class="container reveal-on-scroll">
-      <span class="section-num">III</span>
-      <span class="eyebrow" data-i18n="roi.sectionEyebrow">Часть третья · Возврат на вложенное</span>
+      <span class="eyebrow" data-i18n="roi.sectionEyebrow">Часть вторая · Возврат на вложенное</span>
       <h2 data-i18n="roi.title">Цена — это инвестиция, а не расход</h2>
       <div class="stats">
         <div class="stat">
-          <div class="num">×3</div>
-          <div class="label" data-i18n="roi.stat1">Срок службы по сравнению с дешёвыми аналогами</div>
+          <div class="num" data-i18n="roi.stat1.num">−100%</div>
+          <div class="label" data-i18n="roi.stat1.label">Затрат на рекламу — по сравнению с другими серверами на рынке</div>
         </div>
         <div class="stat">
-          <div class="num">−60%</div>
-          <div class="label" data-i18n="roi.stat2">Времени на ваш контроль и согласования</div>
+          <div class="num" data-i18n="roi.stat2.num">+60%</div>
+          <div class="label" data-i18n="roi.stat2.label">В год к ценности проекта за счёт пассивного роста (участники, носители тега, активность)</div>
         </div>
         <div class="stat">
-          <div class="num">0</div>
-          <div class="label" data-i18n="roi.stat3">Скрытых доплат и «вылезающих» работ</div>
+          <div class="num" data-i18n="roi.stat3.num">0</div>
+          <div class="label" data-i18n="roi.stat3.label">Скрытых доплат и «вылезающих» работ</div>
         </div>
       </div>
       <p class="stats-note" data-i18n="roi.note">Ориентировочные показатели на основе собственной практики — конкретные цифры по вашему проекту в коммерческом предложении.</p>
@@ -785,46 +679,6 @@
         <li data-i18n="cheap.item4" data-i18n-html><strong>Скрытые доплаты.</strong> Низкая стартовая цена часто заканчивается счётом в 1.5–2 раза выше.</li>
         <li data-i18n="cheap.item5" data-i18n-html><strong>Ваше время.</strong> Самый дорогой ресурс — расходуется на контроль, а не на ваше дело.</li>
       </ul>
-    </div>
-  </section>
-
-  <!-- SECTION IV: GUARANTEES -->
-  <section>
-    <div class="container reveal-on-scroll">
-      <span class="section-num">IV</span>
-      <span class="eyebrow" data-i18n="guarantees.sectionEyebrow">Часть четвёртая · Что мы берём на себя</span>
-      <h2 data-i18n="guarantees.title">Цена включает обязательства</h2>
-      <div class="two-col">
-        <div class="item">
-          <h3 data-i18n="guarantees.g1.title">Договор и фиксированная стоимость</h3>
-          <p data-i18n="guarantees.g1.text">Цена в КП = цена в счёте. Никаких «появилось ещё».</p>
-        </div>
-        <div class="item">
-          <h3 data-i18n="guarantees.g2.title">Сроки прописаны</h3>
-          <p data-i18n="guarantees.g2.text">И с штрафами с нашей стороны, если просрочим.</p>
-        </div>
-        <div class="item">
-          <h3 data-i18n="guarantees.g3.title">Гарантия на результат</h3>
-          <p data-i18n="guarantees.g3.text">Период бесплатных доработок — с момента сдачи.</p>
-        </div>
-        <div class="item">
-          <h3 data-i18n="guarantees.g4.title">Один человек на связи</h3>
-          <p data-i18n="guarantees.g4.text">Не «менеджер передал в производство» — единая точка ответственности.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- THREE OPTIONS -->
-  <section>
-    <div class="container reveal-on-scroll">
-      <span class="eyebrow" data-i18n="options.eyebrow">Если всё ещё дорого</span>
-      <h2 data-i18n="options.title">Три честных варианта</h2>
-      <ol class="options">
-        <li data-i18n="options.opt1" data-i18n-html><strong>Сократить объём.</strong> Уберём часть работ — цена снизится пропорционально, без потери качества того, что осталось.</li>
-        <li data-i18n="options.opt2" data-i18n-html><strong>Разбить на этапы.</strong> Платите по мере готовности, а не всё сразу. Можно остановиться после любого этапа.</li>
-        <li data-i18n="options.opt3" data-i18n-html><strong>Идти к тем, кто дешевле.</strong> Это нормально. Но возвращайтесь, если первый вариант не сработает — мы поможем доделать.</li>
-      </ol>
     </div>
   </section>
 
@@ -911,22 +765,12 @@
           row2: { name: "93k+ носителей тега", share: "~30%", desc: "Накопленная за годы база. Каждый носитель работает как живая реклама 24/7 — бесплатно и пожизненно." },
           row3: { name: "Тег и его позиция в нише", share: "~10%", desc: "Один из первых тегов в нише — это нельзя повторить, можно только купить. С нуля такая позиция строится годами." }
         },
-        compare: {
-          sectionEyebrow: "Часть вторая · Где мы на рынке",
-          title: "Три варианта, которые есть у клиента",
-          head: { cheap: "Дешёвый", us: "Мы", expensive: "Дорогой" },
-          row1: { name: "Цена", cheap: "−40%", us: "База", expensive: "+60%" },
-          row2: { name: "Источник трафика", cheap: "Платная реклама", us: "100% органика", expensive: "Платная реклама" },
-          row3: { name: "Расходы в месяц после покупки", cheap: "$1k+ на рекламу", us: "$0", expensive: "$5k+ на рекламу" },
-          row4: { name: "Через год без рекламы", cheap: "Сервер мёртв", us: "Работает так же", expensive: "Сервер мёртв" },
-          row5: { name: "Чем подкреплена цена", cheap: "Прошлые расходы на рекламу", us: "Накопленный актив", expensive: "Прошлые расходы на рекламу" }
-        },
         roi: {
-          sectionEyebrow: "Часть третья · Возврат на вложенное",
+          sectionEyebrow: "Часть вторая · Возврат на вложенное",
           title: "Цена — это инвестиция, а не расход",
-          stat1: "Срок службы по сравнению с дешёвыми аналогами",
-          stat2: "Времени на ваш контроль и согласования",
-          stat3: "Скрытых доплат и «вылезающих» работ",
+          stat1: { num: "−100%", label: "Затрат на рекламу — по сравнению с другими серверами на рынке" },
+          stat2: { num: "+60%", label: "В год к ценности проекта за счёт пассивного роста (участники, носители тега, активность)" },
+          stat3: { num: "0", label: "Скрытых доплат и «вылезающих» работ" },
           note: "Ориентировочные показатели на основе собственной практики — конкретные цифры по вашему проекту в коммерческом предложении."
         },
         cheap: {
@@ -937,21 +781,6 @@
           item3: "<strong>Отсутствие гарантии.</strong> «Договорились на словах» = «никто ни за что не отвечает».",
           item4: "<strong>Скрытые доплаты.</strong> Низкая стартовая цена часто заканчивается счётом в 1.5–2 раза выше.",
           item5: "<strong>Ваше время.</strong> Самый дорогой ресурс — расходуется на контроль, а не на ваше дело."
-        },
-        guarantees: {
-          sectionEyebrow: "Часть четвёртая · Что мы берём на себя",
-          title: "Цена включает обязательства",
-          g1: { title: "Договор и фиксированная стоимость", text: "Цена в КП = цена в счёте. Никаких «появилось ещё»." },
-          g2: { title: "Сроки прописаны", text: "И с штрафами с нашей стороны, если просрочим." },
-          g3: { title: "Гарантия на результат", text: "Период бесплатных доработок — с момента сдачи." },
-          g4: { title: "Один человек на связи", text: "Не «менеджер передал в производство» — единая точка ответственности." }
-        },
-        options: {
-          eyebrow: "Если всё ещё дорого",
-          title: "Три честных варианта",
-          opt1: "<strong>Сократить объём.</strong> Уберём часть работ — цена снизится пропорционально, без потери качества того, что осталось.",
-          opt2: "<strong>Разбить на этапы.</strong> Платите по мере готовности, а не всё сразу. Можно остановиться после любого этапа.",
-          opt3: "<strong>Идти к тем, кто дешевле.</strong> Это нормально. Но возвращайтесь, если первый вариант не сработает — мы поможем доделать."
         },
         cta: {
           eyebrow: "Решение за вами",
@@ -1023,22 +852,12 @@
           row2: { name: "93k+ tag carriers", share: "~30%", desc: "An audience accumulated over years. Each carrier acts as a living ad — 24/7, free, and for life." },
           row3: { name: "The tag and its niche position", share: "~10%", desc: "One of the first tags in the niche — this can't be replicated, only bought. From zero, this position takes years to build." }
         },
-        compare: {
-          sectionEyebrow: "Part two · Where we sit in the market",
-          title: "Three options on the table",
-          head: { cheap: "Cheap", us: "Us", expensive: "Premium" },
-          row1: { name: "Price", cheap: "−40%", us: "Baseline", expensive: "+60%" },
-          row2: { name: "Traffic source", cheap: "Paid ads", us: "100% organic", expensive: "Paid ads" },
-          row3: { name: "Monthly cost after purchase", cheap: "$1k+ on ads", us: "$0", expensive: "$5k+ on ads" },
-          row4: { name: "After 1 year with no ads", cheap: "Server is dead", us: "Same as today", expensive: "Server is dead" },
-          row5: { name: "What backs the price", cheap: "Past ad spend", us: "Accumulated asset", expensive: "Past ad spend" }
-        },
         roi: {
-          sectionEyebrow: "Part three · Return on investment",
+          sectionEyebrow: "Part two · Return on investment",
           title: "Price is an investment, not an expense",
-          stat1: "Lifespan compared to cheap alternatives",
-          stat2: "Less time spent on your oversight and approvals",
-          stat3: "Hidden surcharges or \"surprise\" work",
+          stat1: { num: "−100%", label: "Ad spend — compared to other servers on the market" },
+          stat2: { num: "+60%", label: "Per year to project value through passive growth (members, tag carriers, activity)" },
+          stat3: { num: "0", label: "Hidden surcharges or \"surprise\" work" },
           note: "Indicative figures based on our own practice — concrete numbers for your project come with the proposal."
         },
         cheap: {
@@ -1049,21 +868,6 @@
           item3: "<strong>No warranty.</strong> \"Agreed verbally\" = \"no one is responsible for anything.\"",
           item4: "<strong>Hidden surcharges.</strong> A low starting price often ends in a bill 1.5–2× higher.",
           item5: "<strong>Your time.</strong> Your most expensive resource — spent on oversight instead of your business."
-        },
-        guarantees: {
-          sectionEyebrow: "Part four · What we commit to",
-          title: "The price includes commitments",
-          g1: { title: "Contract and fixed cost", text: "The proposal price = the invoice price. No \"something else came up.\"" },
-          g2: { title: "Deadlines on paper", text: "With penalties on our side if we miss them." },
-          g3: { title: "Result guarantee", text: "A period of free revisions starting from delivery." },
-          g4: { title: "One point of contact", text: "Not \"the manager passed it to production\" — a single accountable person." }
-        },
-        options: {
-          eyebrow: "If it's still too much",
-          title: "Three honest options",
-          opt1: "<strong>Reduce scope.</strong> We'll remove parts — the price drops proportionally, without compromising what's left.",
-          opt2: "<strong>Split into stages.</strong> Pay as we deliver, not all upfront. You can stop after any stage.",
-          opt3: "<strong>Go to someone cheaper.</strong> That's fine. But come back if it doesn't work out — we'll help finish it."
         },
         cta: {
           eyebrow: "The decision is yours",
