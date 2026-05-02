@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -157,15 +157,6 @@
       color: var(--muted);
       max-width: 620px;
       line-height: 1.5;
-    }
-    .hero .meta {
-      margin-top: 4em;
-      font-size: 13px;
-      color: var(--muted);
-      letter-spacing: 0.04em;
-      border-top: 1px solid var(--line);
-      padding-top: 1.2em;
-      max-width: 200px;
     }
     .hero .scroll-hint {
       position: absolute;
@@ -427,16 +418,6 @@
       color: #FBF6EC;
     }
 
-    /* === FOOTER === */
-    footer {
-      padding: 32px 0;
-      background: var(--ink);
-      border-top: 1px solid rgba(248, 245, 240, 0.1);
-      color: rgba(248, 245, 240, 0.4);
-      font-size: 13px;
-      text-align: center;
-    }
-
     /* === ANIMATIONS === */
     .reveal-on-scroll {
       opacity: 0;
@@ -472,7 +453,6 @@
       .compare-grid { grid-template-columns: 1fr; gap: 16px; }
       .compare-card { padding: 26px 24px; }
       .hero { padding-top: 60px; }
-      .hero .meta { margin-top: 3em; }
       .hero .scroll-hint { bottom: 24px; }
 
       th, td { padding: 14px 12px; font-size: 0.88rem; }
@@ -491,8 +471,8 @@
 
   <!-- LANGUAGE SWITCHER -->
   <div class="lang-switcher" role="group" aria-label="Language">
-    <button class="lang-btn active" data-lang="ru" aria-label="Русский">RU</button>
-    <button class="lang-btn" data-lang="en" aria-label="English">EN</button>
+    <button class="lang-btn" data-lang="ru" aria-label="Русский">RU</button>
+    <button class="lang-btn active" data-lang="en" aria-label="English">EN</button>
   </div>
 
   <!-- HERO -->
@@ -501,7 +481,6 @@
       <span class="eyebrow" data-i18n="hero.eyebrow">Обоснование цены · Тег-сервера</span>
       <h1 data-i18n="hero.title" data-i18n-html>Почему<br>именно <span class="accent">эта цена</span></h1>
       <p class="subtitle" data-i18n="hero.subtitle">Прозрачное обоснование цены наших тег-серверов — и почему её нельзя сравнивать со стоимостью классических серверов на рынке.</p>
-      <div class="meta" data-i18n="hero.meta">2026 · Версия 1.0</div>
     </div>
     <div class="scroll-hint" data-i18n="hero.scroll">Прокрутите вниз</div>
   </section>
@@ -655,12 +634,6 @@
     </div>
   </section>
 
-  <footer>
-    <div class="container">
-      <span data-i18n="footer.copy">© 2026 · Все права защищены</span>
-    </div>
-  </footer>
-
   <script>
     /* ====== TRANSLATIONS ====== */
     const translations = {
@@ -673,7 +646,6 @@
           eyebrow: "Обоснование цены · Тег-сервера",
           title: "Почему<br>именно <span class=\"accent\">эта цена</span>",
           subtitle: "Прозрачное обоснование цены наших тег-серверов — и почему её нельзя сравнивать со стоимостью классических серверов на рынке.",
-          meta: "2026 · Версия 1.0",
           scroll: "Прокрутите вниз"
         },
         traffic: {
@@ -740,8 +712,7 @@
           eyebrow: "Итог",
           title: "Цена — это <span class=\"mark\">сумма решений</span>, которые мы приняли в вашу пользу.",
           body: "Не «дороже конкурентов» и не «средняя по рынку». Каждая часть стоимости отражает то, что вы получаете в результате — и то, чего не получите там, где дешевле."
-        },
-        footer: { copy: "© 2026 · Все права защищены" }
+        }
       },
       en: {
         meta: {
@@ -752,7 +723,6 @@
           eyebrow: "Pricing rationale · Tag servers",
           title: "Why<br>exactly <span class=\"accent\">this price</span>",
           subtitle: "A transparent breakdown of our tag servers' price — and why it can't be compared to classic servers on the market.",
-          meta: "2026 · Version 1.0",
           scroll: "Scroll down"
         },
         traffic: {
@@ -819,8 +789,7 @@
           eyebrow: "Bottom line",
           title: "The price is the <span class=\"mark\">sum of decisions</span> we made in your favor.",
           body: "Not \"more expensive than competitors\" or \"the market average.\" Each part of the cost reflects what you actually get — and what you won't get where it's cheaper."
-        },
-        footer: { copy: "© 2026 · All rights reserved" }
+        }
       }
     };
 
@@ -831,8 +800,7 @@
     function getInitialLang() {
       const stored = localStorage.getItem(STORAGE_KEY);
       if (stored && SUPPORTED.includes(stored)) return stored;
-      const nav = (navigator.language || 'ru').slice(0, 2).toLowerCase();
-      return SUPPORTED.includes(nav) ? nav : 'ru';
+      return 'en';
     }
 
     function getByPath(obj, path) {
