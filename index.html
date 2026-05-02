@@ -184,17 +184,6 @@
       50% { transform: translateX(-50%) translateY(-6px); }
     }
 
-    /* === SHORT ANSWER === */
-    .answer-section h2 {
-      max-width: 920px;
-    }
-    .answer-section .body {
-      font-size: clamp(1rem, 1.4vw, 1.15rem);
-      color: var(--muted);
-      max-width: 720px;
-      margin-top: 1em;
-    }
-
     /* === LEAD PARAGRAPH (intro after section title) === */
     .lead {
       font-size: clamp(1.05rem, 1.5vw, 1.2rem);
@@ -433,23 +422,10 @@
       font-size: 1.05rem;
       margin-top: 1em;
     }
-    .cta .contacts {
-      margin-top: 3em;
-      font-size: 1rem;
-      color: rgba(248, 245, 240, 0.7);
-      line-height: 2;
+    .cta .mark {
+      background: linear-gradient(transparent 60%, rgba(184, 148, 95, 0.55) 60%);
+      color: #FBF6EC;
     }
-    .cta .contacts strong {
-      color: var(--bg);
-      font-weight: 500;
-      display: inline-block;
-      min-width: 100px;
-    }
-    .cta .contacts a {
-      color: var(--bg);
-      border-bottom: 1px solid rgba(184, 148, 95, 0.5);
-    }
-    .cta .contacts a:hover { color: var(--accent); }
 
     /* === FOOTER === */
     footer {
@@ -503,9 +479,6 @@
       .feature-list li { padding-left: 28px; }
       .feature-list li::before { top: 26px; width: 16px; }
 
-      .cta .contacts strong { display: block; min-width: auto; margin-bottom: 2px; }
-      .cta .contacts { line-height: 1.6; }
-      .cta .contacts > div { margin-bottom: 12px; }
     }
 
     @media (max-width: 480px) {
@@ -531,15 +504,6 @@
       <div class="meta" data-i18n="hero.meta">2026 · Версия 1.0</div>
     </div>
     <div class="scroll-hint" data-i18n="hero.scroll">Прокрутите вниз</div>
-  </section>
-
-  <!-- SHORT ANSWER -->
-  <section class="answer-section">
-    <div class="container reveal-on-scroll">
-      <span class="eyebrow" data-i18n="answer.eyebrow">Короткий ответ</span>
-      <h2 data-i18n="answer.title" data-i18n-html>Цена — это <span class="mark">сумма решений</span>, которые мы приняли в вашу пользу.</h2>
-      <p class="body" data-i18n="answer.body">Не «дороже конкурентов» и не «средняя по рынку». Каждая часть стоимости отражает то, что вы получаете в результате — и то, чего не получите там, где дешевле.</p>
-    </div>
   </section>
 
   <!-- SECTION I: TRAFFIC SOURCE -->
@@ -670,14 +634,14 @@
   <!-- COST OF CHEAP -->
   <section>
     <div class="container reveal-on-scroll">
-      <span class="eyebrow" data-i18n="cheap.eyebrow">Что вы НЕ видите в дешёвой цене</span>
+      <span class="eyebrow" data-i18n="cheap.eyebrow">Что вы НЕ видите в цене дешёвого сервера</span>
       <h2 data-i18n="cheap.title">Скрытая стоимость экономии</h2>
       <ul class="feature-list">
-        <li data-i18n="cheap.item1" data-i18n-html><strong>Переделки.</strong> Дешёвый исполнитель сдаёт «как получилось». Доделывать придётся либо вам, либо за дополнительную плату.</li>
-        <li data-i18n="cheap.item2" data-i18n-html><strong>Сорванные сроки.</strong> Когда экономят на людях, страдает планирование.</li>
-        <li data-i18n="cheap.item3" data-i18n-html><strong>Отсутствие гарантии.</strong> «Договорились на словах» = «никто ни за что не отвечает».</li>
-        <li data-i18n="cheap.item4" data-i18n-html><strong>Скрытые доплаты.</strong> Низкая стартовая цена часто заканчивается счётом в 1.5–2 раза выше.</li>
-        <li data-i18n="cheap.item5" data-i18n-html><strong>Ваше время.</strong> Самый дорогой ресурс — расходуется на контроль, а не на ваше дело.</li>
+        <li data-i18n="cheap.item1" data-i18n-html><strong>Расходы на рекламу.</strong> Цена покупки — только начало. Чтобы сервер не умер, придётся тратить $1k+/мес на рекламу. За год это +$12k поверх ценника.</li>
+        <li data-i18n="cheap.item2" data-i18n-html><strong>Зависимость от арбитража.</strong> Заработок держится на тонкой грани +10–20% над расходами на рекламу. Один скачок цен на трафик — и сервер уходит в минус.</li>
+        <li data-i18n="cheap.item3" data-i18n-html><strong>Иллюзия аудитории.</strong> Текущая статистика — это след от вложений предыдущего владельца. Когда вы перестанете платить за рекламу, она обнулится за дни.</li>
+        <li data-i18n="cheap.item4" data-i18n-html><strong>Неликвидность.</strong> Дешёвый сервер легко купить, но почти невозможно продать обратно — без рекламного бюджета он никому не нужен.</li>
+        <li data-i18n="cheap.item5" data-i18n-html><strong>Финал года.</strong> Через год вы потратили в 2–3 раза больше, чем стоил сервер, а ценность не выросла. Тег-сервер за то же время добавил +60% к себе.</li>
       </ul>
     </div>
   </section>
@@ -685,14 +649,9 @@
   <!-- CTA -->
   <section class="cta">
     <div class="container reveal-on-scroll">
-      <span class="eyebrow" data-i18n="cta.eyebrow">Решение за вами</span>
-      <h2 data-i18n="cta.title" data-i18n-html>Цена — это <span class="accent">обещание</span>.<br>Мы готовы его сдержать.</h2>
-      <p class="body" data-i18n="cta.body">Если остались вопросы по конкретным цифрам — давайте разберём ваш проект отдельно. Покажем расчёт построчно.</p>
-      <div class="contacts">
-        <div><strong data-i18n="cta.emailLabel">Email</strong> <a href="mailto:hello@example.com">hello@example.com</a></div>
-        <div><strong data-i18n="cta.phoneLabel">Телефон</strong> <a href="tel:+70000000000">+7 (___) ___-__-__</a></div>
-        <div><strong data-i18n="cta.siteLabel">Сайт</strong> <a href="https://example.com" target="_blank" rel="noopener">example.com</a></div>
-      </div>
+      <span class="eyebrow" data-i18n="cta.eyebrow">Итог</span>
+      <h2 data-i18n="cta.title" data-i18n-html>Цена — это <span class="mark">сумма решений</span>, которые мы приняли в вашу пользу.</h2>
+      <p class="body" data-i18n="cta.body">Не «дороже конкурентов» и не «средняя по рынку». Каждая часть стоимости отражает то, что вы получаете в результате — и то, чего не получите там, где дешевле.</p>
     </div>
   </section>
 
@@ -716,11 +675,6 @@
           subtitle: "Прозрачное обоснование цены наших тег-серверов — и почему её нельзя сравнивать со стоимостью классических серверов на рынке.",
           meta: "2026 · Версия 1.0",
           scroll: "Прокрутите вниз"
-        },
-        answer: {
-          eyebrow: "Короткий ответ",
-          title: "Цена — это <span class=\"mark\">сумма решений</span>, которые мы приняли в вашу пользу.",
-          body: "Не «дороже конкурентов» и не «средняя по рынку». Каждая часть стоимости отражает то, что вы получаете в результате — и то, чего не получите там, где дешевле."
         },
         traffic: {
           sectionEyebrow: "Часть первая · Что отличает тег-сервера",
@@ -774,21 +728,18 @@
           note: "Ориентировочные показатели на основе собственной практики"
         },
         cheap: {
-          eyebrow: "Что вы НЕ видите в дешёвой цене",
+          eyebrow: "Что вы НЕ видите в цене дешёвого сервера",
           title: "Скрытая стоимость экономии",
-          item1: "<strong>Переделки.</strong> Дешёвый исполнитель сдаёт «как получилось». Доделывать придётся либо вам, либо за дополнительную плату.",
-          item2: "<strong>Сорванные сроки.</strong> Когда экономят на людях, страдает планирование.",
-          item3: "<strong>Отсутствие гарантии.</strong> «Договорились на словах» = «никто ни за что не отвечает».",
-          item4: "<strong>Скрытые доплаты.</strong> Низкая стартовая цена часто заканчивается счётом в 1.5–2 раза выше.",
-          item5: "<strong>Ваше время.</strong> Самый дорогой ресурс — расходуется на контроль, а не на ваше дело."
+          item1: "<strong>Расходы на рекламу.</strong> Цена покупки — только начало. Чтобы сервер не умер, придётся тратить $1k+/мес на рекламу. За год это +$12k поверх ценника.",
+          item2: "<strong>Зависимость от арбитража.</strong> Заработок держится на тонкой грани +10–20% над расходами на рекламу. Один скачок цен на трафик — и сервер уходит в минус.",
+          item3: "<strong>Иллюзия аудитории.</strong> Текущая статистика — это след от вложений предыдущего владельца. Когда вы перестанете платить за рекламу, она обнулится за дни.",
+          item4: "<strong>Неликвидность.</strong> Дешёвый сервер легко купить, но почти невозможно продать обратно — без рекламного бюджета он никому не нужен.",
+          item5: "<strong>Финал года.</strong> Через год вы потратили в 2–3 раза больше, чем стоил сервер, а ценность не выросла. Тег-сервер за то же время добавил +60% к себе."
         },
         cta: {
-          eyebrow: "Решение за вами",
-          title: "Цена — это <span class=\"accent\">обещание</span>.<br>Мы готовы его сдержать.",
-          body: "Если остались вопросы по конкретным цифрам — давайте разберём ваш проект отдельно. Покажем расчёт построчно.",
-          emailLabel: "Email",
-          phoneLabel: "Телефон",
-          siteLabel: "Сайт"
+          eyebrow: "Итог",
+          title: "Цена — это <span class=\"mark\">сумма решений</span>, которые мы приняли в вашу пользу.",
+          body: "Не «дороже конкурентов» и не «средняя по рынку». Каждая часть стоимости отражает то, что вы получаете в результате — и то, чего не получите там, где дешевле."
         },
         footer: { copy: "© 2026 · Все права защищены" }
       },
@@ -803,11 +754,6 @@
           subtitle: "A transparent breakdown of our tag servers' price — and why it can't be compared to classic servers on the market.",
           meta: "2026 · Version 1.0",
           scroll: "Scroll down"
-        },
-        answer: {
-          eyebrow: "Short answer",
-          title: "The price is the <span class=\"mark\">sum of decisions</span> we made in your favor.",
-          body: "Not \"more expensive than competitors\" or \"the market average.\" Each part of the cost reflects what you actually get — and what you won't get where it's cheaper."
         },
         traffic: {
           sectionEyebrow: "Part one · What sets tag servers apart",
@@ -861,21 +807,18 @@
           note: "Indicative figures based on our own practice"
         },
         cheap: {
-          eyebrow: "What you DON'T see in a cheap quote",
+          eyebrow: "What you DON'T see in a cheap server's price",
           title: "The hidden cost of saving",
-          item1: "<strong>Rework.</strong> A cheap contractor delivers \"good enough.\" You either fix it yourself or pay extra to finish.",
-          item2: "<strong>Missed deadlines.</strong> When people are the savings, planning suffers.",
-          item3: "<strong>No warranty.</strong> \"Agreed verbally\" = \"no one is responsible for anything.\"",
-          item4: "<strong>Hidden surcharges.</strong> A low starting price often ends in a bill 1.5–2× higher.",
-          item5: "<strong>Your time.</strong> Your most expensive resource — spent on oversight instead of your business."
+          item1: "<strong>Ad spend.</strong> The purchase price is just the start. To keep the server alive, you need to spend $1k+/mo on ads. Over a year, that's +$12k on top of the sticker.",
+          item2: "<strong>Arbitrage dependence.</strong> Revenue rides on a thin +10–20% margin over ad spend. One price hike from the ad provider and the server goes negative.",
+          item3: "<strong>An illusion of an audience.</strong> Current stats are residue from the previous owner's ad spending. When you stop paying for ads, they reset to zero within days.",
+          item4: "<strong>No liquidity.</strong> A cheap server is easy to buy but nearly impossible to sell back — without an ad budget, no one wants it.",
+          item5: "<strong>End of year.</strong> After a year you've spent 2–3× the server's price, and the value hasn't grown. A tag server over the same year added +60% to itself."
         },
         cta: {
-          eyebrow: "The decision is yours",
-          title: "Price is a <span class=\"accent\">promise</span>.<br>We're ready to keep it.",
-          body: "If you have questions about specific numbers — let's go through your project separately. We'll show the math line by line.",
-          emailLabel: "Email",
-          phoneLabel: "Phone",
-          siteLabel: "Website"
+          eyebrow: "Bottom line",
+          title: "The price is the <span class=\"mark\">sum of decisions</span> we made in your favor.",
+          body: "Not \"more expensive than competitors\" or \"the market average.\" Each part of the cost reflects what you actually get — and what you won't get where it's cheaper."
         },
         footer: { copy: "© 2026 · All rights reserved" }
       }
