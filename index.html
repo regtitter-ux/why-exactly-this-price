@@ -2,12 +2,9 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Почему именно эта цена</title>
-
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reset.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/monokai.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="meta.title">Почему именно эта цена</title>
+  <meta name="description" data-i18n-attr="content" data-i18n="meta.description" content="Прозрачное обоснование стоимости — что вы получаете и почему это столько стоит.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,573 +14,975 @@
     :root {
       --bg: #F8F5F0;
       --bg-alt: #EFEAE0;
+      --bg-card: #FFFFFF;
       --ink: #0F1419;
       --muted: #6B6B6B;
       --accent: #B8945F;
       --accent-dark: #8B6F47;
       --line: rgba(15, 20, 25, 0.12);
+      --max-width: 1080px;
+      --section-pad-y: 120px;
+      --section-pad-x: 48px;
     }
 
-    .reveal {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      font-size: 32px;
-      font-weight: 400;
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 18px;
+      line-height: 1.55;
       color: var(--ink);
-      letter-spacing: -0.01em;
+      background: var(--bg);
+      letter-spacing: -0.005em;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
-    .reveal .slides {
-      text-align: left;
-    }
+    img { max-width: 100%; display: block; }
 
-    .reveal .slides section {
-      padding: 0 60px;
-      box-sizing: border-box;
-    }
-
-    body, .reveal-viewport {
-      background: var(--bg) !important;
-    }
-
-    .reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+    h1, h2, h3, h4 {
       font-family: 'Fraunces', Georgia, serif;
-      color: var(--ink);
-      text-transform: none;
-      letter-spacing: -0.02em;
       font-weight: 600;
       line-height: 1.1;
+      letter-spacing: -0.02em;
       margin: 0 0 0.4em;
-    }
-
-    .reveal h1 { font-size: 2.4em; font-weight: 700; }
-    .reveal h2 { font-size: 1.7em; }
-    .reveal h3 { font-size: 1.2em; }
-
-    .reveal p { line-height: 1.5; margin: 0 0 0.8em; }
-    .reveal a { color: var(--accent-dark); text-decoration: none; border-bottom: 1px solid var(--accent); }
-    .reveal strong { color: var(--ink); font-weight: 600; }
-    .reveal em { font-style: italic; color: var(--muted); }
-
-    .reveal ul, .reveal ol { display: block; margin-left: 0; padding-left: 1.1em; }
-    .reveal li { margin-bottom: 0.45em; line-height: 1.45; }
-    .reveal ul { list-style: none; padding-left: 0; }
-    .reveal ul li { position: relative; padding-left: 1.4em; }
-    .reveal ul li::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 0.7em;
-      width: 0.7em;
-      height: 1px;
-      background: var(--accent);
-    }
-
-    .reveal .slide-number {
-      font-family: 'Inter', sans-serif;
-      font-size: 14px;
-      color: var(--muted);
-      background: transparent;
-      right: 32px;
-      bottom: 24px;
-    }
-
-    .reveal .progress {
-      color: var(--accent);
-      height: 3px;
-    }
-
-    .reveal .controls {
-      color: var(--accent);
-    }
-
-    /* Eyebrow label */
-    .eyebrow {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.5em;
-      font-weight: 500;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--accent-dark);
-      margin-bottom: 1.2em;
-      display: block;
-    }
-
-    /* Title slide */
-    .title-slide {
-      display: flex !important;
-      flex-direction: column;
-      justify-content: center;
-      height: 100%;
-      padding: 0 80px !important;
-    }
-    .title-slide h1 {
-      font-size: 3.4em;
-      line-height: 1.05;
-      margin-bottom: 0.3em;
-    }
-    .title-slide .subtitle {
-      font-size: 1.05em;
-      color: var(--muted);
-      margin-top: 0.4em;
-      max-width: 70%;
-    }
-    .title-slide .meta {
-      margin-top: 3em;
-      font-size: 0.55em;
-      color: var(--muted);
-      letter-spacing: 0.04em;
-      border-top: 1px solid var(--line);
-      padding-top: 1em;
-    }
-
-    /* Question/quote slide */
-    .quote-slide blockquote {
-      border: none;
-      box-shadow: none;
-      background: none;
-      font-family: 'Fraunces', serif;
-      font-size: 2.1em;
-      font-weight: 400;
-      line-height: 1.25;
-      color: var(--ink);
-      padding: 0;
-      margin: 0;
-      max-width: 90%;
-      font-style: italic;
-    }
-    .quote-slide .attr {
-      margin-top: 1.5em;
-      font-size: 0.55em;
-      color: var(--muted);
-      letter-spacing: 0.04em;
-    }
-
-    /* Section header */
-    .section-slide {
-      display: flex !important;
-      flex-direction: column;
-      justify-content: center;
-      height: 100%;
-    }
-    .section-slide .section-num {
-      font-family: 'Fraunces', serif;
-      font-size: 5em;
-      font-weight: 600;
-      color: var(--accent);
-      line-height: 1;
-      margin-bottom: 0.1em;
-    }
-    .section-slide h2 {
-      font-size: 2.4em;
-      max-width: 80%;
-    }
-
-    /* Two-column layout */
-    .cols {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: start;
-    }
-    .cols-3 {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 40px;
-      align-items: start;
-    }
-
-    /* Card */
-    .card {
-      background: var(--bg-alt);
-      padding: 28px 30px;
-      border-radius: 4px;
-      border-left: 3px solid var(--accent);
-    }
-    .card h3 {
-      font-size: 1.05em;
-      margin-bottom: 0.5em;
-    }
-    .card p {
-      font-size: 0.78em;
-      color: var(--muted);
-      margin: 0;
-      line-height: 1.5;
-    }
-
-    /* Big number / stat */
-    .stat-row {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 50px;
-      margin-top: 1.2em;
-    }
-    .stat .num {
-      font-family: 'Fraunces', serif;
-      font-size: 3.2em;
-      font-weight: 600;
-      color: var(--accent);
-      line-height: 1;
-      margin-bottom: 0.2em;
-    }
-    .stat .label {
-      font-size: 0.68em;
-      color: var(--muted);
-      line-height: 1.4;
-    }
-
-    /* Comparison table */
-    .compare {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 1em;
-      font-size: 0.78em;
-    }
-    .compare th, .compare td {
-      text-align: left;
-      padding: 14px 18px;
-      border-bottom: 1px solid var(--line);
-    }
-    .compare th {
-      font-weight: 500;
-      color: var(--muted);
-      font-size: 0.85em;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-    }
-    .compare td.highlight {
-      background: var(--bg-alt);
-      font-weight: 500;
       color: var(--ink);
     }
 
-    /* Closing slide */
-    .cta-slide {
-      display: flex !important;
-      flex-direction: column;
-      justify-content: center;
-      height: 100%;
-      padding: 0 80px !important;
-    }
-    .cta-slide h2 {
-      font-size: 2.6em;
-      margin-bottom: 0.4em;
-    }
-    .cta-slide .contacts {
-      margin-top: 2em;
-      font-size: 0.85em;
-      color: var(--muted);
-      line-height: 1.8;
-    }
-    .cta-slide .contacts strong {
-      color: var(--ink);
-      font-weight: 500;
-    }
+    h1 { font-size: clamp(2.4rem, 6vw, 4.5rem); font-weight: 700; }
+    h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
+    h3 { font-size: clamp(1.1rem, 2vw, 1.4rem); }
 
-    /* Mark */
+    p { margin: 0 0 1em; }
+
+    a { color: var(--accent-dark); text-decoration: none; }
+    a:hover { color: var(--accent); }
+
+    strong { font-weight: 600; }
+
+    .accent { color: var(--accent); }
     .mark {
       background: linear-gradient(transparent 60%, rgba(184, 148, 95, 0.3) 60%);
       padding: 0 0.1em;
     }
 
-    /* Hint at bottom */
-    .hint {
-      position: absolute;
-      bottom: 24px;
-      left: 60px;
+    /* === LANGUAGE SWITCHER === */
+    .lang-switcher {
+      position: fixed;
+      top: 24px;
+      right: 24px;
+      z-index: 100;
+      display: flex;
+      gap: 4px;
+      background: rgba(248, 245, 240, 0.85);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid var(--line);
+      padding: 4px;
+      border-radius: 999px;
+    }
+    .lang-btn {
+      font-family: inherit;
       font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: none;
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .lang-btn:hover { color: var(--ink); }
+    .lang-btn.active {
+      background: var(--ink);
+      color: var(--bg);
+    }
+
+    /* === LAYOUT === */
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 var(--section-pad-x);
+    }
+
+    section {
+      padding: var(--section-pad-y) 0;
+      position: relative;
+    }
+
+    section + section {
+      border-top: 1px solid var(--line);
+    }
+
+    /* === SHARED ELEMENTS === */
+    .eyebrow {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent-dark);
+      margin: 0 0 1.2em;
+      display: block;
+    }
+
+    .section-num {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(3rem, 8vw, 5.5rem);
+      font-weight: 600;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 0.15em;
+      display: block;
+    }
+
+    /* === HERO === */
+    .hero {
+      min-height: 100vh;
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-top: 80px;
+    }
+    .hero h1 {
+      margin-bottom: 0.3em;
+    }
+    .hero .subtitle {
+      font-size: clamp(1.05rem, 1.5vw, 1.25rem);
+      color: var(--muted);
+      max-width: 620px;
+      line-height: 1.5;
+    }
+    .hero .meta {
+      margin-top: 4em;
+      font-size: 13px;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+      border-top: 1px solid var(--line);
+      padding-top: 1.2em;
+      max-width: 200px;
+    }
+    .hero .scroll-hint {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      opacity: 0.7;
+      animation: bounce 2s infinite;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(-6px); }
+    }
+
+    /* === QUOTE === */
+    .quote-section blockquote {
+      border: none;
+      margin: 0;
+      padding: 0;
+      font-family: 'Fraunces', serif;
+      font-size: clamp(1.6rem, 4.5vw, 3rem);
+      font-weight: 400;
+      line-height: 1.2;
+      font-style: italic;
+      max-width: 900px;
+    }
+    .quote-section .attr {
+      margin-top: 1.8em;
+      font-size: 14px;
       color: var(--muted);
       letter-spacing: 0.04em;
     }
 
-    @media (max-width: 768px) {
-      .cols, .cols-3, .stat-row { grid-template-columns: 1fr; }
-      .reveal .slides section { padding: 0 30px; }
+    /* === SHORT ANSWER === */
+    .answer-section h2 {
+      max-width: 920px;
+    }
+    .answer-section .body {
+      font-size: clamp(1rem, 1.4vw, 1.15rem);
+      color: var(--muted);
+      max-width: 720px;
+      margin-top: 1em;
+    }
+
+    /* === CARDS === */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 2.5em;
+    }
+    .card {
+      background: var(--bg-card);
+      padding: 32px 28px;
+      border-radius: 6px;
+      border-left: 3px solid var(--accent);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(15, 20, 25, 0.06);
+    }
+    .card h3 {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 0.6em;
+    }
+    .card p {
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin: 0;
+      line-height: 1.55;
+    }
+
+    /* === TABLES === */
+    .table-wrap {
+      margin-top: 2em;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    table {
+      width: 100%;
+      min-width: 560px;
+      border-collapse: collapse;
+      font-size: 0.95rem;
+    }
+    th, td {
+      text-align: left;
+      padding: 18px 20px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+    }
+    th {
+      font-weight: 500;
+      color: var(--muted);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    td.highlight, th.highlight {
+      background: var(--bg-alt);
+    }
+    td.highlight { font-weight: 500; }
+    .compare th:first-child, .compare td:first-child { padding-left: 4px; }
+
+    /* === STATS === */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+      margin-top: 2.5em;
+    }
+    .stat .num {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(2.8rem, 6vw, 4rem);
+      font-weight: 600;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 0.3em;
+    }
+    .stat .label {
+      font-size: 0.92rem;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+    .stats-note {
+      margin-top: 2em;
+      font-size: 0.85rem;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    /* === LISTS === */
+    .feature-list {
+      list-style: none;
+      padding: 0;
+      margin: 2em 0 0;
+      max-width: 840px;
+    }
+    .feature-list li {
+      position: relative;
+      padding: 18px 0 18px 36px;
+      border-bottom: 1px solid var(--line);
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+    .feature-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 28px;
+      width: 20px;
+      height: 1px;
+      background: var(--accent);
+    }
+    .feature-list li:last-child { border-bottom: none; }
+    .feature-list strong { color: var(--ink); }
+    .feature-list em { color: var(--muted); font-style: normal; }
+
+    /* === GUARANTEES (2-col) === */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px 60px;
+      margin-top: 2.5em;
+    }
+    .two-col .item h3 {
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.4em;
+    }
+    .two-col .item p {
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    /* === ORDERED LIST === */
+    .options {
+      list-style: none;
+      counter-reset: options;
+      padding: 0;
+      margin: 2em 0 0;
+      max-width: 880px;
+    }
+    .options li {
+      counter-increment: options;
+      position: relative;
+      padding: 24px 0 24px 64px;
+      border-bottom: 1px solid var(--line);
+      font-size: 1rem;
+      line-height: 1.55;
+    }
+    .options li::before {
+      content: counter(options, decimal-leading-zero);
+      position: absolute;
+      left: 0;
+      top: 22px;
+      font-family: 'Fraunces', serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--accent);
+    }
+    .options li:last-child { border-bottom: none; }
+    .options strong { color: var(--ink); }
+
+    /* === CTA === */
+    .cta {
+      padding: var(--section-pad-y) 0;
+      background: var(--ink);
+      color: var(--bg);
+    }
+    .cta .container { max-width: var(--max-width); }
+    .cta .eyebrow { color: var(--accent); }
+    .cta h2 {
+      color: var(--bg);
+      max-width: 900px;
+    }
+    .cta .body {
+      color: rgba(248, 245, 240, 0.7);
+      max-width: 680px;
+      font-size: 1.05rem;
+      margin-top: 1em;
+    }
+    .cta .contacts {
+      margin-top: 3em;
+      font-size: 1rem;
+      color: rgba(248, 245, 240, 0.7);
+      line-height: 2;
+    }
+    .cta .contacts strong {
+      color: var(--bg);
+      font-weight: 500;
+      display: inline-block;
+      min-width: 100px;
+    }
+    .cta .contacts a {
+      color: var(--bg);
+      border-bottom: 1px solid rgba(184, 148, 95, 0.5);
+    }
+    .cta .contacts a:hover { color: var(--accent); }
+
+    /* === FOOTER === */
+    footer {
+      padding: 32px 0;
+      background: var(--ink);
+      border-top: 1px solid rgba(248, 245, 240, 0.1);
+      color: rgba(248, 245, 240, 0.4);
+      font-size: 13px;
+      text-align: center;
+    }
+
+    /* === ANIMATIONS === */
+    .reveal-on-scroll {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal-on-scroll.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal-on-scroll { opacity: 1; transform: none; transition: none; }
+      html { scroll-behavior: auto; }
+      .scroll-hint { animation: none; }
+    }
+
+    /* === MOBILE === */
+    @media (max-width: 880px) {
+      :root {
+        --section-pad-y: 80px;
+        --section-pad-x: 24px;
+      }
+      body { font-size: 16px; }
+      .lang-switcher {
+        top: 16px;
+        right: 16px;
+      }
+      .lang-btn { padding: 5px 12px; font-size: 12px; }
+
+      .cards { grid-template-columns: 1fr; gap: 16px; }
+      .stats { grid-template-columns: 1fr; gap: 28px; }
+      .two-col { grid-template-columns: 1fr; gap: 28px; }
+      .hero { padding-top: 60px; }
+      .hero .meta { margin-top: 3em; }
+      .hero .scroll-hint { bottom: 24px; }
+
+      th, td { padding: 14px 12px; font-size: 0.88rem; }
+      .feature-list li { padding-left: 28px; }
+      .feature-list li::before { top: 26px; width: 16px; }
+      .options li { padding-left: 50px; }
+      .options li::before { font-size: 1.2rem; }
+
+      .cta .contacts strong { display: block; min-width: auto; margin-bottom: 2px; }
+      .cta .contacts { line-height: 1.6; }
+      .cta .contacts > div { margin-bottom: 12px; }
+    }
+
+    @media (max-width: 480px) {
+      :root { --section-pad-y: 64px; }
+      .lang-switcher { top: 12px; right: 12px; }
     }
   </style>
 </head>
 <body>
 
-<div class="reveal">
-  <div class="slides">
+  <!-- LANGUAGE SWITCHER -->
+  <div class="lang-switcher" role="group" aria-label="Language">
+    <button class="lang-btn active" data-lang="ru" aria-label="Русский">RU</button>
+    <button class="lang-btn" data-lang="en" aria-label="English">EN</button>
+  </div>
 
-    <!-- 1. TITLE -->
-    <section class="title-slide">
-      <span class="eyebrow">Презентация для клиента</span>
-      <h1>Почему<br>именно <span style="color: var(--accent);">эта цена</span></h1>
-      <p class="subtitle">Прозрачное обоснование стоимости — что вы получаете и почему это столько стоит.</p>
-      <div class="meta">2026 · Версия 1.0</div>
-    </section>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container reveal-on-scroll">
+      <span class="eyebrow" data-i18n="hero.eyebrow">Презентация для клиента</span>
+      <h1 data-i18n="hero.title" data-i18n-html>Почему<br>именно <span class="accent">эта цена</span></h1>
+      <p class="subtitle" data-i18n="hero.subtitle">Прозрачное обоснование стоимости — что вы получаете и почему это столько стоит.</p>
+      <div class="meta" data-i18n="hero.meta">2026 · Версия 1.0</div>
+    </div>
+    <div class="scroll-hint" data-i18n="hero.scroll">Прокрутите вниз</div>
+  </section>
 
-    <!-- 2. QUESTION -->
-    <section class="quote-slide">
-      <span class="eyebrow">Вопрос, который слышат все</span>
-      <blockquote>«А почему так дорого?<br>Я видел дешевле».</blockquote>
-      <p class="attr">— Почти каждый клиент перед сделкой</p>
-    </section>
+  <!-- QUOTE -->
+  <section class="quote-section">
+    <div class="container reveal-on-scroll">
+      <span class="eyebrow" data-i18n="quote.eyebrow">Вопрос, который слышат все</span>
+      <blockquote data-i18n="quote.text" data-i18n-html>«А почему так дорого?<br>Я видел дешевле».</blockquote>
+      <p class="attr" data-i18n="quote.attr">— Почти каждый клиент перед сделкой</p>
+    </div>
+  </section>
 
-    <!-- 3. FRAMING -->
-    <section>
-      <span class="eyebrow">Короткий ответ</span>
-      <h2>Цена — это <span class="mark">сумма решений</span>, которые мы приняли в вашу пользу.</h2>
-      <p style="font-size: 0.85em; color: var(--muted); max-width: 80%; margin-top: 1em;">
-        Не «дороже конкурентов» и не «средняя по рынку». Каждая часть стоимости отражает то, что вы получаете
-        в результате — и то, чего не получите там, где дешевле.
-      </p>
-    </section>
+  <!-- SHORT ANSWER -->
+  <section class="answer-section">
+    <div class="container reveal-on-scroll">
+      <span class="eyebrow" data-i18n="answer.eyebrow">Короткий ответ</span>
+      <h2 data-i18n="answer.title" data-i18n-html>Цена — это <span class="mark">сумма решений</span>, которые мы приняли в вашу пользу.</h2>
+      <p class="body" data-i18n="answer.body">Не «дороже конкурентов» и не «средняя по рынку». Каждая часть стоимости отражает то, что вы получаете в результате — и то, чего не получите там, где дешевле.</p>
+    </div>
+  </section>
 
-    <!-- 4. SECTION I -->
-    <section class="section-slide">
-      <div class="section-num">I</div>
-      <span class="eyebrow">Часть первая</span>
-      <h2>Что входит<br>в стоимость</h2>
-    </section>
-
-    <!-- 5. WHAT'S INCLUDED -->
-    <section>
-      <span class="eyebrow">Состав ценности</span>
-      <h2>Вы платите не за продукт — за результат</h2>
-      <div class="cols-3" style="margin-top: 1.2em;">
+  <!-- SECTION I: WHAT'S INCLUDED -->
+  <section>
+    <div class="container reveal-on-scroll">
+      <span class="section-num">I</span>
+      <span class="eyebrow" data-i18n="included.sectionEyebrow">Часть первая · Состав ценности</span>
+      <h2 data-i18n="included.title">Вы платите не за продукт — за результат</h2>
+      <div class="cards">
         <div class="card">
-          <h3>Сам продукт</h3>
-          <p>Материалы, работа, технологии — то, что обычно видно в счёте.</p>
+          <h3 data-i18n="included.card1.title">Сам продукт</h3>
+          <p data-i18n="included.card1.text">Материалы, работа, технологии — то, что обычно видно в счёте.</p>
         </div>
         <div class="card">
-          <h3>Экспертиза</h3>
-          <p>Годы практики, проверенные методики, ошибки, которые мы уже совершили — за свой счёт.</p>
+          <h3 data-i18n="included.card2.title">Экспертиза</h3>
+          <p data-i18n="included.card2.text">Годы практики, проверенные методики, ошибки, которые мы уже совершили — за свой счёт.</p>
         </div>
         <div class="card">
-          <h3>Сопровождение</h3>
-          <p>Поддержка после сдачи, доработки, ответственность за результат на дистанции.</p>
+          <h3 data-i18n="included.card3.title">Сопровождение</h3>
+          <p data-i18n="included.card3.text">Поддержка после сдачи, доработки, ответственность за результат на дистанции.</p>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- 6. COST BREAKDOWN -->
-    <section>
-      <span class="eyebrow">Из чего складывается цена</span>
-      <h2>Разбор по статьям</h2>
-      <table class="compare">
-        <thead>
-          <tr>
-            <th>Статья</th>
-            <th>Доля в цене</th>
-            <th>Что это</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Производство / реализация</strong></td>
-            <td>~40%</td>
-            <td>Прямые затраты: материалы, исполнители, инструменты.</td>
-          </tr>
-          <tr>
-            <td><strong>Экспертиза и время</strong></td>
-            <td>~25%</td>
-            <td>Проектирование, консультации, принятие решений.</td>
-          </tr>
-          <tr>
-            <td><strong>Контроль качества</strong></td>
-            <td>~15%</td>
-            <td>Проверки, переделки, тестирование до сдачи.</td>
-          </tr>
-          <tr>
-            <td><strong>Гарантия и поддержка</strong></td>
-            <td>~10%</td>
-            <td>Резерв на доработки и сопровождение после.</td>
-          </tr>
-          <tr>
-            <td><strong>Налоги и операционка</strong></td>
-            <td>~10%</td>
-            <td>Юридическое оформление, бухгалтерия, инфраструктура.</td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
+  <!-- COST BREAKDOWN -->
+  <section>
+    <div class="container reveal-on-scroll">
+      <span class="eyebrow" data-i18n="breakdown.eyebrow">Из чего складывается цена</span>
+      <h2 data-i18n="breakdown.title">Разбор по статьям</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th data-i18n="breakdown.head.item">Статья</th>
+              <th data-i18n="breakdown.head.share">Доля в цене</th>
+              <th data-i18n="breakdown.head.what">Что это</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong data-i18n="breakdown.row1.name">Производство / реализация</strong></td>
+              <td data-i18n="breakdown.row1.share">~40%</td>
+              <td data-i18n="breakdown.row1.desc">Прямые затраты: материалы, исполнители, инструменты.</td>
+            </tr>
+            <tr>
+              <td><strong data-i18n="breakdown.row2.name">Экспертиза и время</strong></td>
+              <td data-i18n="breakdown.row2.share">~25%</td>
+              <td data-i18n="breakdown.row2.desc">Проектирование, консультации, принятие решений.</td>
+            </tr>
+            <tr>
+              <td><strong data-i18n="breakdown.row3.name">Контроль качества</strong></td>
+              <td data-i18n="breakdown.row3.share">~15%</td>
+              <td data-i18n="breakdown.row3.desc">Проверки, переделки, тестирование до сдачи.</td>
+            </tr>
+            <tr>
+              <td><strong data-i18n="breakdown.row4.name">Гарантия и поддержка</strong></td>
+              <td data-i18n="breakdown.row4.share">~10%</td>
+              <td data-i18n="breakdown.row4.desc">Резерв на доработки и сопровождение после.</td>
+            </tr>
+            <tr>
+              <td><strong data-i18n="breakdown.row5.name">Налоги и операционка</strong></td>
+              <td data-i18n="breakdown.row5.share">~10%</td>
+              <td data-i18n="breakdown.row5.desc">Юридическое оформление, бухгалтерия, инфраструктура.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
 
-    <!-- 7. SECTION II -->
-    <section class="section-slide">
-      <div class="section-num">II</div>
-      <span class="eyebrow">Часть вторая</span>
-      <h2>Сравнение<br>с альтернативами</h2>
-    </section>
+  <!-- SECTION II: COMPARISON -->
+  <section>
+    <div class="container reveal-on-scroll">
+      <span class="section-num">II</span>
+      <span class="eyebrow" data-i18n="compare.sectionEyebrow">Часть вторая · Где мы на рынке</span>
+      <h2 data-i18n="compare.title">Три варианта, которые есть у клиента</h2>
+      <div class="table-wrap">
+        <table class="compare">
+          <thead>
+            <tr>
+              <th></th>
+              <th data-i18n="compare.head.cheap">Дешёвый</th>
+              <th class="highlight" style="text-align:center;" data-i18n="compare.head.us">Мы</th>
+              <th data-i18n="compare.head.expensive">Дорогой</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td data-i18n="compare.row1.name">Цена</td>
+              <td data-i18n="compare.row1.cheap">−40%</td>
+              <td class="highlight" style="text-align:center;"><strong data-i18n="compare.row1.us">База</strong></td>
+              <td data-i18n="compare.row1.expensive">+60%</td>
+            </tr>
+            <tr>
+              <td data-i18n="compare.row2.name">Срок</td>
+              <td data-i18n="compare.row2.cheap">Долго / непредсказуемо</td>
+              <td class="highlight" style="text-align:center;" data-i18n="compare.row2.us">Фиксированный</td>
+              <td data-i18n="compare.row2.expensive">Фиксированный</td>
+            </tr>
+            <tr>
+              <td data-i18n="compare.row3.name">Гарантия</td>
+              <td data-i18n="compare.row3.cheap">Нет / на словах</td>
+              <td class="highlight" style="text-align:center;" data-i18n="compare.row3.us">Договор</td>
+              <td data-i18n="compare.row3.expensive">Договор</td>
+            </tr>
+            <tr>
+              <td data-i18n="compare.row4.name">Поддержка</td>
+              <td data-i18n="compare.row4.cheap">Закончилась со сдачей</td>
+              <td class="highlight" style="text-align:center;" data-i18n="compare.row4.us">Включена</td>
+              <td data-i18n="compare.row4.expensive">Платно сверху</td>
+            </tr>
+            <tr>
+              <td data-i18n="compare.row5.name">Риск переделок</td>
+              <td data-i18n="compare.row5.cheap">Высокий</td>
+              <td class="highlight" style="text-align:center;" data-i18n="compare.row5.us">Низкий</td>
+              <td data-i18n="compare.row5.expensive">Низкий</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
 
-    <!-- 8. COMPARISON -->
-    <section>
-      <span class="eyebrow">Где мы на рынке</span>
-      <h2>Три варианта, которые есть у клиента</h2>
-      <table class="compare">
-        <thead>
-          <tr>
-            <th></th>
-            <th>Дешёвый</th>
-            <th class="highlight" style="text-align: center;">Мы</th>
-            <th>Дорогой</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Цена</td>
-            <td>−40%</td>
-            <td class="highlight" style="text-align: center;"><strong>База</strong></td>
-            <td>+60%</td>
-          </tr>
-          <tr>
-            <td>Срок</td>
-            <td>Долго / непредсказуемо</td>
-            <td class="highlight" style="text-align: center;">Фиксированный</td>
-            <td>Фиксированный</td>
-          </tr>
-          <tr>
-            <td>Гарантия</td>
-            <td>Нет / на словах</td>
-            <td class="highlight" style="text-align: center;">Договор</td>
-            <td>Договор</td>
-          </tr>
-          <tr>
-            <td>Поддержка</td>
-            <td>Закончилась со сдачей</td>
-            <td class="highlight" style="text-align: center;">Включена</td>
-            <td>Платно сверху</td>
-          </tr>
-          <tr>
-            <td>Риск переделок</td>
-            <td>Высокий</td>
-            <td class="highlight" style="text-align: center;">Низкий</td>
-            <td>Низкий</td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
-
-    <!-- 9. SECTION III -->
-    <section class="section-slide">
-      <div class="section-num">III</div>
-      <span class="eyebrow">Часть третья</span>
-      <h2>Что вы<br>получаете взамен</h2>
-    </section>
-
-    <!-- 10. VALUE / ROI -->
-    <section>
-      <span class="eyebrow">Возврат на вложенное</span>
-      <h2>Цена — это инвестиция, а не расход</h2>
-      <div class="stat-row">
+  <!-- SECTION III: VALUE / ROI -->
+  <section>
+    <div class="container reveal-on-scroll">
+      <span class="section-num">III</span>
+      <span class="eyebrow" data-i18n="roi.sectionEyebrow">Часть третья · Возврат на вложенное</span>
+      <h2 data-i18n="roi.title">Цена — это инвестиция, а не расход</h2>
+      <div class="stats">
         <div class="stat">
           <div class="num">×3</div>
-          <div class="label">Срок службы по сравнению с дешёвыми аналогами</div>
+          <div class="label" data-i18n="roi.stat1">Срок службы по сравнению с дешёвыми аналогами</div>
         </div>
         <div class="stat">
           <div class="num">−60%</div>
-          <div class="label">Времени на ваш контроль и согласования</div>
+          <div class="label" data-i18n="roi.stat2">Времени на ваш контроль и согласования</div>
         </div>
         <div class="stat">
           <div class="num">0</div>
-          <div class="label">Скрытых доплат и «вылезающих» работ</div>
+          <div class="label" data-i18n="roi.stat3">Скрытых доплат и «вылезающих» работ</div>
         </div>
       </div>
-      <p style="font-size: 0.75em; color: var(--muted); margin-top: 1.5em;">
-        <em>Ориентировочные показатели на основе собственной практики — конкретные цифры по вашему проекту в коммерческом предложении.</em>
-      </p>
-    </section>
+      <p class="stats-note" data-i18n="roi.note">Ориентировочные показатели на основе собственной практики — конкретные цифры по вашему проекту в коммерческом предложении.</p>
+    </div>
+  </section>
 
-    <!-- 11. COST OF CHEAP -->
-    <section>
-      <span class="eyebrow">Что вы НЕ видите в дешёвой цене</span>
-      <h2>Скрытая стоимость экономии</h2>
-      <ul style="font-size: 0.95em; max-width: 90%;">
-        <li><strong>Переделки.</strong> Дешёвый исполнитель сдаёт «как получилось». Доделывать придётся либо вам, либо за дополнительную плату.</li>
-        <li><strong>Сорванные сроки.</strong> Когда экономят на людях, страдает планирование.</li>
-        <li><strong>Отсутствие гарантии.</strong> «Договорились на словах» = «никто ни за что не отвечает».</li>
-        <li><strong>Скрытые доплаты.</strong> Низкая стартовая цена часто заканчивается счётом в 1.5–2 раза выше.</li>
-        <li><strong>Ваше время.</strong> Самый дорогой ресурс — расходуется на контроль, а не на ваше дело.</li>
+  <!-- COST OF CHEAP -->
+  <section>
+    <div class="container reveal-on-scroll">
+      <span class="eyebrow" data-i18n="cheap.eyebrow">Что вы НЕ видите в дешёвой цене</span>
+      <h2 data-i18n="cheap.title">Скрытая стоимость экономии</h2>
+      <ul class="feature-list">
+        <li data-i18n="cheap.item1" data-i18n-html><strong>Переделки.</strong> Дешёвый исполнитель сдаёт «как получилось». Доделывать придётся либо вам, либо за дополнительную плату.</li>
+        <li data-i18n="cheap.item2" data-i18n-html><strong>Сорванные сроки.</strong> Когда экономят на людях, страдает планирование.</li>
+        <li data-i18n="cheap.item3" data-i18n-html><strong>Отсутствие гарантии.</strong> «Договорились на словах» = «никто ни за что не отвечает».</li>
+        <li data-i18n="cheap.item4" data-i18n-html><strong>Скрытые доплаты.</strong> Низкая стартовая цена часто заканчивается счётом в 1.5–2 раза выше.</li>
+        <li data-i18n="cheap.item5" data-i18n-html><strong>Ваше время.</strong> Самый дорогой ресурс — расходуется на контроль, а не на ваше дело.</li>
       </ul>
-    </section>
+    </div>
+  </section>
 
-    <!-- 12. SECTION IV -->
-    <section class="section-slide">
-      <div class="section-num">IV</div>
-      <span class="eyebrow">Часть четвёртая</span>
-      <h2>Гарантии<br>и ответственность</h2>
-    </section>
-
-    <!-- 13. GUARANTEES -->
-    <section>
-      <span class="eyebrow">Что мы берём на себя</span>
-      <h2>Цена включает обязательства</h2>
-      <div class="cols">
-        <div>
-          <h3 style="font-family: 'Inter', sans-serif; font-size: 0.95em; font-weight: 600; margin-bottom: 0.4em;">Договор и фиксированная стоимость</h3>
-          <p style="font-size: 0.8em; color: var(--muted); margin-bottom: 1.5em;">
-            Цена в КП = цена в счёте. Никаких «появилось ещё».
-          </p>
-          <h3 style="font-family: 'Inter', sans-serif; font-size: 0.95em; font-weight: 600; margin-bottom: 0.4em;">Сроки прописаны</h3>
-          <p style="font-size: 0.8em; color: var(--muted); margin-bottom: 1.5em;">
-            И с штрафами с нашей стороны, если просрочим.
-          </p>
+  <!-- SECTION IV: GUARANTEES -->
+  <section>
+    <div class="container reveal-on-scroll">
+      <span class="section-num">IV</span>
+      <span class="eyebrow" data-i18n="guarantees.sectionEyebrow">Часть четвёртая · Что мы берём на себя</span>
+      <h2 data-i18n="guarantees.title">Цена включает обязательства</h2>
+      <div class="two-col">
+        <div class="item">
+          <h3 data-i18n="guarantees.g1.title">Договор и фиксированная стоимость</h3>
+          <p data-i18n="guarantees.g1.text">Цена в КП = цена в счёте. Никаких «появилось ещё».</p>
         </div>
-        <div>
-          <h3 style="font-family: 'Inter', sans-serif; font-size: 0.95em; font-weight: 600; margin-bottom: 0.4em;">Гарантия на результат</h3>
-          <p style="font-size: 0.8em; color: var(--muted); margin-bottom: 1.5em;">
-            Период бесплатных доработок — с момента сдачи.
-          </p>
-          <h3 style="font-family: 'Inter', sans-serif; font-size: 0.95em; font-weight: 600; margin-bottom: 0.4em;">Один человек на связи</h3>
-          <p style="font-size: 0.8em; color: var(--muted); margin-bottom: 1.5em;">
-            Не «менеджер передал в производство» — единая точка ответственности.
-          </p>
+        <div class="item">
+          <h3 data-i18n="guarantees.g2.title">Сроки прописаны</h3>
+          <p data-i18n="guarantees.g2.text">И с штрафами с нашей стороны, если просрочим.</p>
+        </div>
+        <div class="item">
+          <h3 data-i18n="guarantees.g3.title">Гарантия на результат</h3>
+          <p data-i18n="guarantees.g3.text">Период бесплатных доработок — с момента сдачи.</p>
+        </div>
+        <div class="item">
+          <h3 data-i18n="guarantees.g4.title">Один человек на связи</h3>
+          <p data-i18n="guarantees.g4.text">Не «менеджер передал в производство» — единая точка ответственности.</p>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- 14. ANTICIPATED OBJECTIONS -->
-    <section>
-      <span class="eyebrow">Если всё ещё дорого</span>
-      <h2>Три честных варианта</h2>
-      <ol style="font-size: 0.95em; max-width: 88%; padding-left: 1.4em;">
-        <li><strong>Сократить объём.</strong> Уберём часть работ — цена снизится пропорционально, без потери качества того, что осталось.</li>
-        <li><strong>Разбить на этапы.</strong> Платите по мере готовности, а не всё сразу. Можно остановиться после любого этапа.</li>
-        <li><strong>Идти к тем, кто дешевле.</strong> Это нормально. Но возвращайтесь, если первый вариант не сработает — мы поможем доделать.</li>
+  <!-- THREE OPTIONS -->
+  <section>
+    <div class="container reveal-on-scroll">
+      <span class="eyebrow" data-i18n="options.eyebrow">Если всё ещё дорого</span>
+      <h2 data-i18n="options.title">Три честных варианта</h2>
+      <ol class="options">
+        <li data-i18n="options.opt1" data-i18n-html><strong>Сократить объём.</strong> Уберём часть работ — цена снизится пропорционально, без потери качества того, что осталось.</li>
+        <li data-i18n="options.opt2" data-i18n-html><strong>Разбить на этапы.</strong> Платите по мере готовности, а не всё сразу. Можно остановиться после любого этапа.</li>
+        <li data-i18n="options.opt3" data-i18n-html><strong>Идти к тем, кто дешевле.</strong> Это нормально. Но возвращайтесь, если первый вариант не сработает — мы поможем доделать.</li>
       </ol>
-    </section>
+    </div>
+  </section>
 
-    <!-- 15. CLOSING -->
-    <section class="cta-slide">
-      <span class="eyebrow">Решение за вами</span>
-      <h2>Цена — это <span style="color: var(--accent);">обещание</span>.<br>Мы готовы его сдержать.</h2>
-      <p style="font-size: 0.85em; color: var(--muted); max-width: 80%; margin-top: 0.8em;">
-        Если остались вопросы по конкретным цифрам — давайте разберём ваш проект отдельно.
-        Покажем расчёт построчно.
-      </p>
+  <!-- CTA -->
+  <section class="cta">
+    <div class="container reveal-on-scroll">
+      <span class="eyebrow" data-i18n="cta.eyebrow">Решение за вами</span>
+      <h2 data-i18n="cta.title" data-i18n-html>Цена — это <span class="accent">обещание</span>.<br>Мы готовы его сдержать.</h2>
+      <p class="body" data-i18n="cta.body">Если остались вопросы по конкретным цифрам — давайте разберём ваш проект отдельно. Покажем расчёт построчно.</p>
       <div class="contacts">
-        <strong>Email:</strong> hello@example.com<br>
-        <strong>Телефон:</strong> +7 (___) ___-__-__<br>
-        <strong>Сайт:</strong> example.com
+        <div><strong data-i18n="cta.emailLabel">Email</strong> <a href="mailto:hello@example.com">hello@example.com</a></div>
+        <div><strong data-i18n="cta.phoneLabel">Телефон</strong> <a href="tel:+70000000000">+7 (___) ___-__-__</a></div>
+        <div><strong data-i18n="cta.siteLabel">Сайт</strong> <a href="https://example.com" target="_blank" rel="noopener">example.com</a></div>
       </div>
-    </section>
+    </div>
+  </section>
 
-  </div>
-</div>
+  <footer>
+    <div class="container">
+      <span data-i18n="footer.copy">© 2026 · Все права защищены</span>
+    </div>
+  </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/highlight.js"></script>
+  <script>
+    /* ====== TRANSLATIONS ====== */
+    const translations = {
+      ru: {
+        meta: {
+          title: "Почему именно эта цена",
+          description: "Прозрачное обоснование стоимости — что вы получаете и почему это столько стоит."
+        },
+        hero: {
+          eyebrow: "Презентация для клиента",
+          title: "Почему<br>именно <span class=\"accent\">эта цена</span>",
+          subtitle: "Прозрачное обоснование стоимости — что вы получаете и почему это столько стоит.",
+          meta: "2026 · Версия 1.0",
+          scroll: "Прокрутите вниз"
+        },
+        quote: {
+          eyebrow: "Вопрос, который слышат все",
+          text: "«А почему так дорого?<br>Я видел дешевле».",
+          attr: "— Почти каждый клиент перед сделкой"
+        },
+        answer: {
+          eyebrow: "Короткий ответ",
+          title: "Цена — это <span class=\"mark\">сумма решений</span>, которые мы приняли в вашу пользу.",
+          body: "Не «дороже конкурентов» и не «средняя по рынку». Каждая часть стоимости отражает то, что вы получаете в результате — и то, чего не получите там, где дешевле."
+        },
+        included: {
+          sectionEyebrow: "Часть первая · Состав ценности",
+          title: "Вы платите не за продукт — за результат",
+          card1: { title: "Сам продукт", text: "Материалы, работа, технологии — то, что обычно видно в счёте." },
+          card2: { title: "Экспертиза", text: "Годы практики, проверенные методики, ошибки, которые мы уже совершили — за свой счёт." },
+          card3: { title: "Сопровождение", text: "Поддержка после сдачи, доработки, ответственность за результат на дистанции." }
+        },
+        breakdown: {
+          eyebrow: "Из чего складывается цена",
+          title: "Разбор по статьям",
+          head: { item: "Статья", share: "Доля в цене", what: "Что это" },
+          row1: { name: "Производство / реализация", share: "~40%", desc: "Прямые затраты: материалы, исполнители, инструменты." },
+          row2: { name: "Экспертиза и время", share: "~25%", desc: "Проектирование, консультации, принятие решений." },
+          row3: { name: "Контроль качества", share: "~15%", desc: "Проверки, переделки, тестирование до сдачи." },
+          row4: { name: "Гарантия и поддержка", share: "~10%", desc: "Резерв на доработки и сопровождение после." },
+          row5: { name: "Налоги и операционка", share: "~10%", desc: "Юридическое оформление, бухгалтерия, инфраструктура." }
+        },
+        compare: {
+          sectionEyebrow: "Часть вторая · Где мы на рынке",
+          title: "Три варианта, которые есть у клиента",
+          head: { cheap: "Дешёвый", us: "Мы", expensive: "Дорогой" },
+          row1: { name: "Цена", cheap: "−40%", us: "База", expensive: "+60%" },
+          row2: { name: "Срок", cheap: "Долго / непредсказуемо", us: "Фиксированный", expensive: "Фиксированный" },
+          row3: { name: "Гарантия", cheap: "Нет / на словах", us: "Договор", expensive: "Договор" },
+          row4: { name: "Поддержка", cheap: "Закончилась со сдачей", us: "Включена", expensive: "Платно сверху" },
+          row5: { name: "Риск переделок", cheap: "Высокий", us: "Низкий", expensive: "Низкий" }
+        },
+        roi: {
+          sectionEyebrow: "Часть третья · Возврат на вложенное",
+          title: "Цена — это инвестиция, а не расход",
+          stat1: "Срок службы по сравнению с дешёвыми аналогами",
+          stat2: "Времени на ваш контроль и согласования",
+          stat3: "Скрытых доплат и «вылезающих» работ",
+          note: "Ориентировочные показатели на основе собственной практики — конкретные цифры по вашему проекту в коммерческом предложении."
+        },
+        cheap: {
+          eyebrow: "Что вы НЕ видите в дешёвой цене",
+          title: "Скрытая стоимость экономии",
+          item1: "<strong>Переделки.</strong> Дешёвый исполнитель сдаёт «как получилось». Доделывать придётся либо вам, либо за дополнительную плату.",
+          item2: "<strong>Сорванные сроки.</strong> Когда экономят на людях, страдает планирование.",
+          item3: "<strong>Отсутствие гарантии.</strong> «Договорились на словах» = «никто ни за что не отвечает».",
+          item4: "<strong>Скрытые доплаты.</strong> Низкая стартовая цена часто заканчивается счётом в 1.5–2 раза выше.",
+          item5: "<strong>Ваше время.</strong> Самый дорогой ресурс — расходуется на контроль, а не на ваше дело."
+        },
+        guarantees: {
+          sectionEyebrow: "Часть четвёртая · Что мы берём на себя",
+          title: "Цена включает обязательства",
+          g1: { title: "Договор и фиксированная стоимость", text: "Цена в КП = цена в счёте. Никаких «появилось ещё»." },
+          g2: { title: "Сроки прописаны", text: "И с штрафами с нашей стороны, если просрочим." },
+          g3: { title: "Гарантия на результат", text: "Период бесплатных доработок — с момента сдачи." },
+          g4: { title: "Один человек на связи", text: "Не «менеджер передал в производство» — единая точка ответственности." }
+        },
+        options: {
+          eyebrow: "Если всё ещё дорого",
+          title: "Три честных варианта",
+          opt1: "<strong>Сократить объём.</strong> Уберём часть работ — цена снизится пропорционально, без потери качества того, что осталось.",
+          opt2: "<strong>Разбить на этапы.</strong> Платите по мере готовности, а не всё сразу. Можно остановиться после любого этапа.",
+          opt3: "<strong>Идти к тем, кто дешевле.</strong> Это нормально. Но возвращайтесь, если первый вариант не сработает — мы поможем доделать."
+        },
+        cta: {
+          eyebrow: "Решение за вами",
+          title: "Цена — это <span class=\"accent\">обещание</span>.<br>Мы готовы его сдержать.",
+          body: "Если остались вопросы по конкретным цифрам — давайте разберём ваш проект отдельно. Покажем расчёт построчно.",
+          emailLabel: "Email",
+          phoneLabel: "Телефон",
+          siteLabel: "Сайт"
+        },
+        footer: { copy: "© 2026 · Все права защищены" }
+      },
+      en: {
+        meta: {
+          title: "Why exactly this price",
+          description: "A transparent breakdown of cost — what you get and why it costs what it costs."
+        },
+        hero: {
+          eyebrow: "Pricing rationale",
+          title: "Why<br>exactly <span class=\"accent\">this price</span>",
+          subtitle: "A transparent breakdown of cost — what you get and why it costs what it costs.",
+          meta: "2026 · Version 1.0",
+          scroll: "Scroll down"
+        },
+        quote: {
+          eyebrow: "The question everyone hears",
+          text: "\"Why is it so expensive?<br>I've seen cheaper.\"",
+          attr: "— Nearly every client before signing"
+        },
+        answer: {
+          eyebrow: "Short answer",
+          title: "The price is the <span class=\"mark\">sum of decisions</span> we made in your favor.",
+          body: "Not \"more expensive than competitors\" or \"the market average.\" Each part of the cost reflects what you actually get — and what you won't get where it's cheaper."
+        },
+        included: {
+          sectionEyebrow: "Part one · Value composition",
+          title: "You're paying for outcomes, not just product",
+          card1: { title: "The product itself", text: "Materials, labor, technology — what you usually see on the invoice." },
+          card2: { title: "Expertise", text: "Years of practice, proven methods, mistakes we've already made — at our expense." },
+          card3: { title: "Aftercare", text: "Post-delivery support, revisions, accountability for the result over time." }
+        },
+        breakdown: {
+          eyebrow: "Where the price comes from",
+          title: "Line-item breakdown",
+          head: { item: "Item", share: "Share of price", what: "What it is" },
+          row1: { name: "Production / delivery", share: "~40%", desc: "Direct costs: materials, labor, tools." },
+          row2: { name: "Expertise and time", share: "~25%", desc: "Planning, consulting, decision-making." },
+          row3: { name: "Quality control", share: "~15%", desc: "Reviews, fixes, testing before handover." },
+          row4: { name: "Warranty and support", share: "~10%", desc: "Reserve for revisions and post-delivery support." },
+          row5: { name: "Taxes and overhead", share: "~10%", desc: "Legal, accounting, infrastructure." }
+        },
+        compare: {
+          sectionEyebrow: "Part two · Where we sit in the market",
+          title: "Three options on the table",
+          head: { cheap: "Cheap", us: "Us", expensive: "Premium" },
+          row1: { name: "Price", cheap: "−40%", us: "Baseline", expensive: "+60%" },
+          row2: { name: "Timeline", cheap: "Long / unpredictable", us: "Fixed", expensive: "Fixed" },
+          row3: { name: "Warranty", cheap: "None / verbal", us: "Contract", expensive: "Contract" },
+          row4: { name: "Support", cheap: "Ends at handover", us: "Included", expensive: "Paid extra" },
+          row5: { name: "Rework risk", cheap: "High", us: "Low", expensive: "Low" }
+        },
+        roi: {
+          sectionEyebrow: "Part three · Return on investment",
+          title: "Price is an investment, not an expense",
+          stat1: "Lifespan compared to cheap alternatives",
+          stat2: "Less time spent on your oversight and approvals",
+          stat3: "Hidden surcharges or \"surprise\" work",
+          note: "Indicative figures based on our own practice — concrete numbers for your project come with the proposal."
+        },
+        cheap: {
+          eyebrow: "What you DON'T see in a cheap quote",
+          title: "The hidden cost of saving",
+          item1: "<strong>Rework.</strong> A cheap contractor delivers \"good enough.\" You either fix it yourself or pay extra to finish.",
+          item2: "<strong>Missed deadlines.</strong> When people are the savings, planning suffers.",
+          item3: "<strong>No warranty.</strong> \"Agreed verbally\" = \"no one is responsible for anything.\"",
+          item4: "<strong>Hidden surcharges.</strong> A low starting price often ends in a bill 1.5–2× higher.",
+          item5: "<strong>Your time.</strong> Your most expensive resource — spent on oversight instead of your business."
+        },
+        guarantees: {
+          sectionEyebrow: "Part four · What we commit to",
+          title: "The price includes commitments",
+          g1: { title: "Contract and fixed cost", text: "The proposal price = the invoice price. No \"something else came up.\"" },
+          g2: { title: "Deadlines on paper", text: "With penalties on our side if we miss them." },
+          g3: { title: "Result guarantee", text: "A period of free revisions starting from delivery." },
+          g4: { title: "One point of contact", text: "Not \"the manager passed it to production\" — a single accountable person." }
+        },
+        options: {
+          eyebrow: "If it's still too much",
+          title: "Three honest options",
+          opt1: "<strong>Reduce scope.</strong> We'll remove parts — the price drops proportionally, without compromising what's left.",
+          opt2: "<strong>Split into stages.</strong> Pay as we deliver, not all upfront. You can stop after any stage.",
+          opt3: "<strong>Go to someone cheaper.</strong> That's fine. But come back if it doesn't work out — we'll help finish it."
+        },
+        cta: {
+          eyebrow: "The decision is yours",
+          title: "Price is a <span class=\"accent\">promise</span>.<br>We're ready to keep it.",
+          body: "If you have questions about specific numbers — let's go through your project separately. We'll show the math line by line.",
+          emailLabel: "Email",
+          phoneLabel: "Phone",
+          siteLabel: "Website"
+        },
+        footer: { copy: "© 2026 · All rights reserved" }
+      }
+    };
 
-<script>
-  Reveal.initialize({
-    hash: true,
-    slideNumber: 'c/t',
-    controls: true,
-    progress: true,
-    center: false,
-    transition: 'slide',
-    transitionSpeed: 'default',
-    backgroundTransition: 'fade',
-    width: 1280,
-    height: 800,
-    margin: 0.06,
-    minScale: 0.2,
-    maxScale: 2.0,
-    plugins: [RevealNotes, RevealHighlight]
-  });
-</script>
+    /* ====== I18N ENGINE ====== */
+    const STORAGE_KEY = 'lang';
+    const SUPPORTED = ['ru', 'en'];
+
+    function getInitialLang() {
+      const stored = localStorage.getItem(STORAGE_KEY);
+      if (stored && SUPPORTED.includes(stored)) return stored;
+      const nav = (navigator.language || 'ru').slice(0, 2).toLowerCase();
+      return SUPPORTED.includes(nav) ? nav : 'ru';
+    }
+
+    function getByPath(obj, path) {
+      return path.split('.').reduce((o, k) => (o && o[k] !== undefined) ? o[k] : null, obj);
+    }
+
+    function applyLang(lang) {
+      const dict = translations[lang];
+      if (!dict) return;
+
+      document.documentElement.lang = lang;
+
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        const val = getByPath(dict, key);
+        if (val == null) return;
+        const attr = el.getAttribute('data-i18n-attr');
+        if (attr) {
+          el.setAttribute(attr, val);
+        } else if (el.hasAttribute('data-i18n-html')) {
+          el.innerHTML = val;
+        } else {
+          el.textContent = val;
+        }
+      });
+
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.lang === lang);
+      });
+
+      localStorage.setItem(STORAGE_KEY, lang);
+    }
+
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.addEventListener('click', () => applyLang(btn.dataset.lang));
+    });
+
+    applyLang(getInitialLang());
+
+    /* ====== REVEAL ON SCROLL ====== */
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+
+    document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
+  </script>
 
 </body>
 </html>
